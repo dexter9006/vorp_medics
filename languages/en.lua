@@ -1,0 +1,23 @@
+Locales["en"] = {
+    Resurrected = "You were resurrected",
+    NoDeadPlayer = "No dead player next to you",
+    NotDoctor = "You are not a doctor!",
+    Overdose = "Too much effect. You will get overdose!",
+    HealButton = "To treat patient press ",
+    StudyHerbals = "To become herbalist press ",
+    NoMoreHerbalists = "You cannot study herbalism here any more",
+    HorseSpawned = "Horse is already taken",
+    HorseDespawned = "Horse is already in stable",
+    NotOnHorse = "You have to be mounted",
+    MedicStables = "Stable for doctor",
+    MedicCrafting = "Prepare medicines",
+    MedicInventory = "Medicines storage",
+    CraftMenu = "Craft menu",
+    syringe = "Syringe",
+    consumable_medicine = "Consumable medicine",
+    bandage = "Bandage",
+    confirm = "Confirm",
+    insertamount = "Insert amount",
+    amount = "Amount",
+    must = "Only digits allowed"
+}
