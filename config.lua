@@ -3,7 +3,7 @@ Config = {
         ["Doctor"] = "doctor",
         ["Police"] = "police",
         ["Sheriff"] = "sheriff"
-    }, --Add or delete jobs to allow revive knocked players
+    }, --Add or delete jobs to allow revive knocked players. ALL OTHER ACTIONS ARE ONLY FOR DOCTORS
 
     defaultlang = "en",
     Align = "center",
