@@ -14,7 +14,9 @@ This script may **not** work properly with VORP-Metabolism!
 * Download and put into `server-data/resources/`
 * `ensure VORP_Medicine` in server.cfg
 * edit the config
-* run database.sql and add to `vorp-inventory/html/img` files from img folder
+* run database.sql
+
+**ATTENTION** you need updated images in vorp_inventory
 
 ## Features
 

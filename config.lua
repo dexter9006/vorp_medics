@@ -14,8 +14,9 @@ Config = {
     ResetInnerCore = true, -- Reset inner core on spawn/after self-healing
     MedicCanSpawnHorse = true, --Allow doctor to have own stable and Spawn horse
 
-    HorseHash = "a_c_horse_americanstandardbred_palominodapple",
+    HorseHash = "a_c_horse_americanstandardbred_palominodapple", --horse spawned by doctor
 
+    -- show blips on map
     BlipsActive = {
         BlipsDoctors = true, --Blips of Doctor's office on map for all players
         BlipsDoctorsOnly = false, --Blips of Doctor's office only for doctors
@@ -25,6 +26,7 @@ Config = {
         BlipsMedicStables = true, --Medic stables
     },
 
+    -- Doctor's offices
     Locations = {
         ["SaintDenis"] = { name = "Saint Denis", x = 2731.30, y = -1230.35, z = 50.37,
                          Stable = {x = 2732.35, y = -1220.67, z = 49.67, h=90},
@@ -43,18 +45,21 @@ Config = {
                          },
     },
 
-    HerbalistLocations = {
-        ["NewHannover"] = { name = "New Hannover", x = 179.80, y = 339.98, z = 120.62, maxAllowed = 4 },
+    --locations where to become herbalist (it is ONLY to become herbalist)
+    HerbalistLocations = { 
+        ["NewHannover"] = { name = "New Hannover", x = 179.80, y = 339.98, z = 120.62, maxAllowed = 4 }, --maxAllowed is max number of players to become herbalist at location
         ["Lemoyne"] = { name = "Lemoyne", x = 909.28, y = -983.24, z = 57.96, maxAllowed = 4 },
         ["WestElizabeth"] = { name = "West Elizabeth", x = -1563.58, y = -1681.67, z = 79.42, maxAllowed = 3 },
         ["Ambarino"] = { name = "Ambarino", x = 710.14, y = 1881.43, z = 239.46, maxAllowed = 2 },
         ["NewAustin"] = { name = "New Austin", x = -4585.95, y = -2738.66, z = -10.57, maxAllowed = 2 }
     },
 
+    -- Crafts for medics at offices
     MedicCraft = {{name = "syringe", desc = "syringe"},
                   {name = "consumable_medicine", desc = "consumable_medicine"},
                   {name = "bandage", desc="bandage"}},
 
+    -- Recepies to craft herbal medicines and tonics available ONLY for herbalists
     Recepies = {
         {
             Text = "Herbal Tonic ",
