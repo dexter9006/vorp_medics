@@ -240,22 +240,48 @@ end
 
 -------------------------------------------------------
 -------------------- At locations ---------------------
-function MedicInOffice()
+function Medics()
     --GetJob()
     if IsMedic then
         for k, v in pairs(Config.Locations) do
             local Office = vector3(v.x, v.y, v.z)
             local DoctorPed = GetPlayerPed(PlayerId())
             local DoctorPedCoord = GetEntityCoords(DoctorPed)
+            local Stable = vector3(Config.Locations.v.Stable.x,Config.Locations.v.Stable.y,Config.Locations.v.Stable.z)
+            local Craft = vector3(Config.Locations.v.Craft.x,Config.Locations.v.Craft.y,Config.Locations.v.Craft.z)
+            local Storage = vector3(Config.Locations.v.Inventory.x,Config.Locations.v.Inventory.y,Config.Locations.v.Inventory.z)
 
+            --healing
             if #(Office - DoctorPedCoord) <= 2.0 then
-                UIPrompt.activateM(v.name)
+                UIPrompt.activate(_U("HealPlayer")..v.name)
                 local nearestPlayer = GetClosestPlayer(DoctorPed)
                 local closePed = GetPlayerPed(nearestPlayer)
                 if Citizen.InvokeNative(0xC92AC953F0A982AE, MedPrompt) then
                     if GetEntityHealth(closePed) < 500 or GetEntityHealth(DoctorPed) < 500 then
                         MedHealPlayerOuter(100)
                     end
+                end
+                return
+            end
+
+            --stable
+            if #(Stable - DoctorPedCoord) <= 2.0 then
+                UIPrompt.activate(_U("MedicStables")..v.name)
+                if Citizen.InvokeNative(0xC92AC953F0A982AE, MedPrompt) then
+                    if horseSpawned then
+                        DespawnHorse()
+                    else
+                        SpawnHorse(v.x,v.y,v.z,v.h)
+                    end
+                end
+                return
+            end
+
+            --Craft medicines
+            if #(Craft - DoctorPedCoord) <= 0.5 then
+                UIPrompt.activate(_U("MedicCrafting")..v.name)
+                if Citizen.InvokeNative(0xC92AC953F0A982AE, MedPrompt) then
+                    OpenMenu(k)
                 end
                 return
             end
@@ -276,8 +302,8 @@ function StudyHerbalism()
             local PlayerPed = GetPlayerPed(PlayerId())
             local PlayerPedCoords = GetEntityCoords(PlayerPed)
             if #(Camp - PlayerPedCoords) <= 5.0 then
-                UIPrompt.activateH(v.name)
-                if Citizen.InvokeNative(0xC92AC953F0A982AE, HerbPrompt) then
+                UIPrompt.activate(_U("StudyHerbals")..v.name)
+                if Citizen.InvokeNative(0xC92AC953F0A982AE, MedPrompt) then
                     TriggerServerEvent("vorpMed:BecomeHerbalist", k)
                 end
                 return
@@ -289,48 +315,6 @@ function StudyHerbalism()
                 TriggerEvent("vorp:AddRecipes", v)
             end
             recipiesSent = true;
-        end
-    end
-end
-
-function MedicStables()
-    if Config.MedicCanSpawnHorse then
-        if IsMedic then
-            for k, v in pairs(Config.MedicStables) do
-                local Stable = vector3(v.x, v.y, v.z)
-                local DoctorPed = GetPlayerPed(PlayerId())
-                local DoctorPedCoord = GetEntityCoords(DoctorPed)
-    
-                if #(Stable - DoctorPedCoord) <= 2.0 then
-                    UIPrompt.activateS(v.name)
-                    if Citizen.InvokeNative(0xC92AC953F0A982AE, HorsePrompt) then
-                        if horseSpawned then
-                            DespawnHorse()
-                        else
-                            SpawnHorse(v.x,v.y,v.z,v.h)
-                        end
-                    end
-                    return
-                end
-            end
-        end
-    end
-end
-
-function MedicCrafting()
-    if IsMedic then
-        for k, v in pairs(Config.MedicCraftLocations) do
-            local Craft = vector3(v.x, v.y, v.z)
-            local DoctorPed = GetPlayerPed(PlayerId())
-            local DoctorPedCoord = GetEntityCoords(DoctorPed)
-
-            if #(Craft - DoctorPedCoord) <= 0.5 then
-                UIPrompt.activateC(v.name)
-                if Citizen.InvokeNative(0xC92AC953F0A982AE, CraftPrompt) then
-                    OpenMenu(k)
-                end
-                return
-            end
         end
     end
 end

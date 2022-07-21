@@ -12,10 +12,8 @@ Citizen.CreateThread(function()
 
     while true do
         Wait(1)
-        MedicInOffice()
+        Medics()
         StudyHerbalism()
-        MedicStables()
-        MedicCrafting()
     end
 end)
 
