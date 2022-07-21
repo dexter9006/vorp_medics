@@ -10,7 +10,7 @@ end)
 VorpInv = exports.vorp_inventory:vorp_inventoryApi()
 
 VorpInv.RegisterUsableItem("syringe", function(data)
-    if IsPlayerMedic(data.source) then
+    if CanPlayerRevive(data.source) then
         VorpInv.subItem(data.source, "syringe", 1)
         TriggerClientEvent("vorpMed:revive", data.source)
     else
@@ -55,6 +55,14 @@ VorpInv.RegisterUsableItem("herbal_tonic", function(data) -- https://reddead.fan
 end)
 
 function IsPlayerMedic(_source)
+    local Character = VORPcore.getUser(_source).getUsedCharacter
+    if tostring(Character.job) == "doctor" then
+        return true
+    end
+    return false
+end
+
+function CanPlayerRevive(_source)
     local Character = VORPcore.getUser(_source).getUsedCharacter
     for k,v in pairs(Config.Job) do
         if tostring(Character.job) == v then

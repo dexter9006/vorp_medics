@@ -3,7 +3,7 @@ Config = {
         ["Doctor"] = "doctor",
         ["Police"] = "police",
         ["Sheriff"] = "sheriff"
-    }, --Add or delete jobs
+    }, --Add or delete jobs to allow revive knocked players. ALL OTHER ACTIONS ARE ONLY FOR DOCTORS
 
     defaultlang = "en",
     Align = "center",
@@ -29,17 +29,17 @@ Config = {
         ["SaintDenis"] = { name = "Saint Denis", x = 2731.30, y = -1230.35, z = 50.37,
                          Stable = {x = 2732.35, y = -1220.67, z = 49.67, h=90},
                          Craft = {x = 2721.35, y = -1232.12, z = 50.37},
-                         Inventory = {x = 2722.66, y = -1232.35, z = 50.37}-- for future update NOT WORKING
+                         Inventory = {x = 2722.66, y = -1232.35, z = 50.37} -- not available now!
                         },
         ["Valentine"] = { name = "Valentine", x = -289.48, y = 810.57, z = 119.39,
                          Stable = {x = -275.99, y = 816.32, z = 119.08, h=85},
                          Craft = {x = -289.57, y = 807.72, z = 119.39},
-                         Inventory = {x = -289.07, y = 804.88, z = 119.39} -- for future update NOT WORKING
+                         Inventory = {x = -289.07, y = 804.88, z = 119.39} -- not available now!
                         },
         ["Strawberry"] = { name = "Strawberry", x = -1804.22, y = -431.89, z = 158.83,
                           Stable = {x = -1811.77, y = -433.35, z = 158.36, h=353},
                           Craft = {x = -1806.11, y = -428.98, z = 158.83},
-                          Inventory = {x = -1807.87, y = -431.13, z = 158.83}-- for future update NOT WORKING
+                          Inventory = {x = -1807.87, y = -431.13, z = 158.83} -- not available now!
                          },
     },
 
