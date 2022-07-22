@@ -19,5 +19,6 @@ Locales["en"] = {
     confirm = "Confirm",
     insertamount = "Insert amount",
     amount = "Amount",
-    must = "Only digits allowed"
+    must = "Only digits allowed",
+    Press = "Press"
 }
