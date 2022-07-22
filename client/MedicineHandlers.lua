@@ -271,7 +271,7 @@ function Medics()
                     if horseSpawned then
                         DespawnHorse()
                     else
-                        SpawnHorse(v.Stables.x, v.Stables.y, v.Stables.z, v.Stables.h)
+                       SpawnHorse(v.Stable.x, v.Stable.y, v.Stable.z, v.Stable.h)
                     end
                 end
                 return
