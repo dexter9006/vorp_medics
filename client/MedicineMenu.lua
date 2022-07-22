@@ -20,7 +20,7 @@ function OpenMenu(craftLocationId)
     end
 
     MenuData.Open('default', GetCurrentResourceName(), 'menuapi' .. craftLocationId, {
-        title = Config.MedicCraftLocations[craftLocationId].name,
+        title = Config.Locations.MedicCraft[craftLocationId].name,
         subtext = _U("CraftMenu"),
         align = Config.Align,
         elements = elements
