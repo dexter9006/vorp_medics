@@ -34,6 +34,11 @@ function AddBlips()
                 Config.Locations[k].BlipHandler = Citizen.InvokeNative(0x554D9D53F696D002, 1664425300, v.x, v.y, v.z)
                 SetBlipSprite(Config.Locations[k].BlipHandler, -1739686743, 1)
                 SetBlipScale(Config.Locations[k].BlipHandler, 0.2)
+                if Config.BlipsActive.BlipsMedicStables and Config.MedicCanSpawnHorse and IsMedic then
+                    Config.MedicStables[k].BlipHandler = Citizen.InvokeNative(0x554D9D53F696D002, 1664425300, v.Stable.x, v.Stable.y, v.Stable.z)
+                    SetBlipSprite(v.Stable.BlipHandler, 1220803671, 1)
+                    SetBlipScale(v.Stable.BlipHandler, 0.2)
+                end
             end
     end
 
@@ -46,13 +51,7 @@ function AddBlips()
             end
     end
 
-    if Config.BlipsActive.BlipsMedicStables and Config.MedicCanSpawnHorse and IsMedic then
-            for k, v in pairs(Config.MedicStables) do
-                Config.MedicStables[k].BlipHandler = Citizen.InvokeNative(0x554D9D53F696D002, 1664425300, v.x, v.y, v.z)
-                SetBlipSprite(Config.MedicStables[k].BlipHandler, 1220803671, 1)
-                SetBlipScale(Config.MedicStables[k].BlipHandler, 0.2)
-            end
-    end
+    
 end
 
 function RemoveBlips()
