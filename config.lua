@@ -46,7 +46,7 @@ Config = {
     },
 
     --locations where to become herbalist (it is ONLY to become herbalist)
-    HerbalistLocations = { 
+    HerbalistLocations = {
         ["NewHannover"] = { name = "New Hannover", x = 179.80, y = 339.98, z = 120.62, maxAllowed = 4 }, --maxAllowed is max number of players to become herbalist at location
         ["Lemoyne"] = { name = "Lemoyne", x = 909.28, y = -983.24, z = 57.96, maxAllowed = 4 },
         ["WestElizabeth"] = { name = "West Elizabeth", x = -1563.58, y = -1681.67, z = 79.42, maxAllowed = 3 },
@@ -59,7 +59,7 @@ Config = {
                   {name = "consumable_medicine", desc = "consumable_medicine"},
                   {name = "bandage", desc="bandage"}},
 
-    -- Recepies to craft herbal medicines and tonics available ONLY for herbalists
+    -- Recepies to craft herbal medicines and tonics available ONLY for herbalists              
     Recepies = {
         {
             Text = "Herbal Tonic ",

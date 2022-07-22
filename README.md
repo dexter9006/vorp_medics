@@ -12,7 +12,7 @@ This script may **not** work properly with VORP-Metabolism!
 ## Installation
 
 * Download and put into `server-data/resources/`
-* `ensure VORP_Medicine` in server.cfg
+* `ensure vorp_medics` in server.cfg
 * edit the config
 * run database.sql
 

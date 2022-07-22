@@ -2,11 +2,7 @@
 Citizen.CreateThread(function()
     AddBlips()
     SetDoorSaintDenis()
-    UIPrompt.initializeM()
-    UIPrompt.initializeH()
-    UIPrompt.initializeS()
-    UIPrompt.initializeC()
-    UIPrompt.initializeI()
+    UIPrompt.initialize()
     
     GetJob()
 
