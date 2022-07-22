@@ -20,7 +20,7 @@ end)
 -------------------------------------------------------
 ---------------------- helpers ------------------------
 function SetDoorSaintDenis()
-    Citizen.InvokeNative(0xD99229FE93B46286, 586229709, 1,1,0,0,0,0)
+    Citizen.InvokeNative(0xD99229FE93B46286, 586229709, 1, 1, 0, 0, 0, 0)
     DoorSystemSetDoorState(586229709, DOORSTATE_UNLOCKED)
     DoorSystemSetOpenRatio(586229709, 0.0, true)
     local obj = Citizen.InvokeNative(0xF7424890E4A094C0, 586229709, 0)
@@ -30,28 +30,31 @@ end
 function AddBlips()
     if Config.BlipsActive.BlipsDoctors or
         Config.BlipsActive.BlipsDoctorsOnly and IsMedic then
-            for k, v in pairs(Config.Locations) do
-                Config.Locations[k].BlipHandler = Citizen.InvokeNative(0x554D9D53F696D002, 1664425300, v.x, v.y, v.z)
-                SetBlipSprite(Config.Locations[k].BlipHandler, -1739686743, 1)
-                SetBlipScale(Config.Locations[k].BlipHandler, 0.2)
-                if Config.BlipsActive.BlipsMedicStables and Config.MedicCanSpawnHorse and IsMedic then
-                    v.Stable.BlipHandler = Citizen.InvokeNative(0x554D9D53F696D002, 1664425300, v.Stable.x, v.Stable.y, v.Stable.z)
-                    SetBlipSprite(v.Stable.BlipHandler, 1220803671, 1)
-                    SetBlipScale(v.Stable.BlipHandler, 0.2)
-                end
+        for k, v in pairs(Config.Locations) do
+
+            Config.Locations[k].BlipHandler = Citizen.InvokeNative(0x554D9D53F696D002, 1664425300, v.x, v.y, v.z)
+            SetBlipSprite(Config.Locations[k].BlipHandler, -1739686743, 1)
+            SetBlipScale(Config.Locations[k].BlipHandler, 0.2)
+            
+            if Config.BlipsActive.BlipsMedicStables and Config.MedicCanSpawnHorse and IsMedic then
+                v.Stable.BlipHandler = Citizen.InvokeNative(0x554D9D53F696D002, 1664425300, v.Stable.x, v.Stable.y,
+                    v.Stable.z)
+                SetBlipSprite(v.Stable.BlipHandler, 1220803671, 1)
+                SetBlipScale(v.Stable.BlipHandler, 0.2)
             end
+        end
     end
 
     if Config.BlipsActive.BlipsHerbalism or
         Config.BlipsActive.BlipsHerbalistsOnly and IsHerbalist then
-            for k, v in pairs(Config.HerbalistLocations) do
-                Config.HerbalistLocations[k].BlipHandler = Citizen.InvokeNative(0x554D9D53F696D002, 1664425300, v.x, v.y, v.z)
-                SetBlipSprite(Config.HerbalistLocations[k].BlipHandler, -675651933, 1)
-                SetBlipScale(Config.HerbalistLocations[k].BlipHandler, 0.2)
-            end
+        for k, v in pairs(Config.HerbalistLocations) do
+            Config.HerbalistLocations[k].BlipHandler = Citizen.InvokeNative(0x554D9D53F696D002, 1664425300, v.x, v.y, v.z)
+            SetBlipSprite(Config.HerbalistLocations[k].BlipHandler, -675651933, 1)
+            SetBlipScale(Config.HerbalistLocations[k].BlipHandler, 0.2)
+        end
     end
 
-    
+
 end
 
 function RemoveBlips()
@@ -123,7 +126,7 @@ function PatientHealing(value)
     SetEntityHealth(playerPed, value)
 end
 
-function SpawnHorse(x,y,z,h)
+function SpawnHorse(x, y, z, h)
     if horseSpawned then
         TriggerEvent("vorp:Tip", _U("HorseSpawned"), 5000)
         return
@@ -137,15 +140,15 @@ function SpawnHorse(x,y,z,h)
         Wait(100)
     end
 
-    local myHorse = Citizen.InvokeNative(0xD49F9B0955C367DE, model, x,y,z,h, true, true, true, true)
+    local myHorse = Citizen.InvokeNative(0xD49F9B0955C367DE, model, x, y, z, h, true, true, true, true)
     --print(myHorse)
     SetModelAsNoLongerNeeded(model)
     Citizen.InvokeNative(0x283978A15512B2FE, myHorse, true)
-    Citizen.InvokeNative(0xD3A7B003ED343FD9, myHorse, 0xD97573C1,true,true,true) --saddle
-    Citizen.InvokeNative(0xD3A7B003ED343FD9, myHorse, 0x508B80B9,true,true,true) --blanket
-    Citizen.InvokeNative(0xD3A7B003ED343FD9, myHorse, 0xF0C30271,true,true,true) --bag
-    Citizen.InvokeNative(0xD3A7B003ED343FD9, myHorse, 0x12F0DF9F,true,true,true) --bedroll
-    Citizen.InvokeNative(0xD3A7B003ED343FD9, myHorse, 0x67AF7302,true,true,true) --stirups
+    Citizen.InvokeNative(0xD3A7B003ED343FD9, myHorse, 0xD97573C1, true, true, true) --saddle
+    Citizen.InvokeNative(0xD3A7B003ED343FD9, myHorse, 0x508B80B9, true, true, true) --blanket
+    Citizen.InvokeNative(0xD3A7B003ED343FD9, myHorse, 0xF0C30271, true, true, true) --bag
+    Citizen.InvokeNative(0xD3A7B003ED343FD9, myHorse, 0x12F0DF9F, true, true, true) --bedroll
+    Citizen.InvokeNative(0xD3A7B003ED343FD9, myHorse, 0x67AF7302, true, true, true) --stirups
     if Config.BlipsActive.BlipsHorses then
         Citizen.InvokeNative(0x23f74c2fda6e7c61, -1230993421, myHorse)
     end
@@ -225,7 +228,7 @@ function MedRessurectPlayer()
     local closePed = GetPlayerPed(closePlayer)
     if closePlayer ~= -1 and IsPedDeadOrDying(closePed, 1) then
         local id = GetPlayerServerId(closePlayer)
-        PlayAnim(DoctorPed, "mech_revive@unapproved", "revive")  --change
+        PlayAnim(DoctorPed, "mech_revive@unapproved", "revive") --change
         TriggerServerEvent("vorpMed:resurrectPlayer", id)
     else
         TriggerEvent("vorp:Tip", _U("NoDeadPlayer"), 5000)
@@ -243,13 +246,14 @@ function Medics()
             local Office = vector3(v.x, v.y, v.z)
             local DoctorPed = GetPlayerPed(PlayerId())
             local DoctorPedCoord = GetEntityCoords(DoctorPed)
-            local Stable = vector3(Config.Locations.v.Stable.x,Config.Locations.v.Stable.y,Config.Locations.v.Stable.z)
-            local Craft = vector3(Config.Locations.v.Craft.x,Config.Locations.v.Craft.y,Config.Locations.v.Craft.z)
-            local Storage = vector3(Config.Locations.v.Inventory.x,Config.Locations.v.Inventory.y,Config.Locations.v.Inventory.z)
+
+            local Stable = vector3(v.Stable.x, v.Stable.y, v.Stable.z)
+            local Craft = vector3(v.Craft.x, v.Craft.y, v.Craft.z)
+            local Storage = vector3(v.Inventory.x, v.Inventory.y, v.Inventory.z)
 
             --healing
             if #(Office - DoctorPedCoord) <= 2.0 then
-                UIPrompt.activate(_U("HealPlayer")..v.name)
+                UIPrompt.activate(_U("HealPlayer") .. v.name)
                 local nearestPlayer = GetClosestPlayer(DoctorPed)
                 local closePed = GetPlayerPed(nearestPlayer)
                 if Citizen.InvokeNative(0xC92AC953F0A982AE, MedPrompt) then
@@ -262,12 +266,12 @@ function Medics()
 
             --stable
             if #(Stable - DoctorPedCoord) <= 2.0 then
-                UIPrompt.activate(_U("MedicStables")..v.name)
+                UIPrompt.activate(_U("MedicStables") .. v.name)
                 if Citizen.InvokeNative(0xC92AC953F0A982AE, MedPrompt) then
                     if horseSpawned then
                         DespawnHorse()
                     else
-                        SpawnHorse(v.x,v.y,v.z,v.h)
+                        SpawnHorse(v.x, v.y, v.z, v.h)
                     end
                 end
                 return
@@ -275,7 +279,7 @@ function Medics()
 
             --Craft medicines
             if #(Craft - DoctorPedCoord) <= 0.5 then
-                UIPrompt.activate(_U("MedicCrafting")..v.name)
+                UIPrompt.activate(_U("MedicCrafting") .. v.name)
                 if Citizen.InvokeNative(0xC92AC953F0A982AE, MedPrompt) then
                     OpenMenu(k)
                 end
@@ -288,7 +292,7 @@ end
 function StudyHerbalism()
     if not IsHerbalist then
         if recipiesSent then
-            for k,v in pairs(Config.Recepies) do
+            for k, v in pairs(Config.Recepies) do
                 TriggerServerEvent("vorp:RemoveRecipes", v)
             end
             recipiesSent = false;
@@ -298,7 +302,7 @@ function StudyHerbalism()
             local PlayerPed = GetPlayerPed(PlayerId())
             local PlayerPedCoords = GetEntityCoords(PlayerPed)
             if #(Camp - PlayerPedCoords) <= 5.0 then
-                UIPrompt.activate(_U("StudyHerbals")..v.name)
+                UIPrompt.activate(_U("StudyHerbals") .. v.name)
                 if Citizen.InvokeNative(0xC92AC953F0A982AE, MedPrompt) then
                     TriggerServerEvent("vorpMed:BecomeHerbalist", k)
                 end
@@ -307,7 +311,7 @@ function StudyHerbalism()
         end
     else
         if not recipiesSent then
-            for k,v in pairs(Config.Recepies) do
+            for k, v in pairs(Config.Recepies) do
                 TriggerEvent("vorp:AddRecipes", v)
             end
             recipiesSent = true;
